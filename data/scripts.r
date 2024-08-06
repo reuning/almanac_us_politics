@@ -6,13 +6,13 @@ subgroup_analysis <-
             group_var=NULL, group_var_labels=NULL, 
             group_var_levels=NULL, 
             group_var_name=NULL, middle_value=NULL, 
-            calc_mean=FALSE){
+            calc_mean=FALSE, weight="VCF0009z"){
 
     if(is.null(group_var)){
         p_data <- data |> 
             rename(var=!!variable) |>
             group_by(VCF0004,var) |>  
-            summarize(n=sum(VCF0009z)) |> 
+            summarize(n=sum(!!sym(weight))) |> 
             group_by(VCF0004) |>
             drop_na(var) |> 
             filter(var %in% levels) |> 
@@ -25,7 +25,7 @@ subgroup_analysis <-
         p_data <- data |> 
             rename(var=!!variable) |>
             group_by(VCF0004,var, !!sym(group_var)) |>  
-            summarize(n=sum(VCF0009z)) |> 
+            summarize(n=sum(!!sym(weight))) |> 
             group_by(VCF0004, !!sym(group_var)) |>
             drop_na(var) |> 
             filter(var %in% levels) |> 

@@ -1,8 +1,8 @@
-#
-#
-#
-#
-#
+---
+title: Positions of "Blacks"
+---
+
+```{r setup}
 library(tidyverse)
 library(ggpubr)
 library(plotly)
@@ -17,30 +17,33 @@ source(here::here("data", "scripts.r"))
 
 
 
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+
+## Question Language
+
+1964-1976:
+In the past few years we have heard a lot about civil rights groups working to improve the position of the Negro in this country. How much real change do you think there has been in the position of the Negro in the past few years: a lot, some, or not much at all?
+
+1984 AND LATER:
+In the past few years, we have heard a lot about improving the position of black people in this country. How much real change do you think there has been in the position of black people in the past few years: a lot, some, or not much at all?
+
+
+1. Not much at all
+2. Some
+3. A lot
+9. DK; depends
+
+## All
+
+```{r}
 
 
 levels <- c(1:3, 9)
-variable <- "VCF0815"
-var_levels <- c("Desegregation",
-                "In between", "Strict Segregation", 
-                "Don't Know")
-var_name <- "Civil Rights Speed"
+variable <- "VCF0813"
+var_levels <- c("Not much at all",
+                "Some", "A lot", "Depends/Don't Know")
+var_name <- "Position of Blacks"
 
 
 
@@ -71,20 +74,20 @@ p <- ggplot(all_df, aes(x=Year, y=Percentage,
         theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-all}
 p + guides(color=guide_legend(nrow=2)) 
 
-#
-#
-#
-#
-#
-#
-#
-#
+``` 
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -99,12 +102,12 @@ all_df <- all_df |> select(-var) |>
     mutate(Group="All") |> 
     ungroup()
 
-#
-#
-#
-#
-#
-#
+```
+
+::: 
+## By Education
+
+```{r}
 group_var_name <- "Education"
 group_var <- "VCF0110"
 group_var_levels <- 1:4
@@ -143,19 +146,19 @@ p <- ggplot(plot_data, aes(x=Year, y=Percentage,
                 theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-education}
 p + guides(color=guide_legend(nrow=2)) 
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -170,13 +173,13 @@ all_df <- plot_data |> ungroup() |>
     rename("Group N"=total, "N"=n, 
             "Group"=!!group_var_name) |> 
     rbind(all_df)
-#
-#
-#
-#
-#
-#
-#
+```
+
+::: 
+
+## By Gender
+
+```{r}
 
 
 
@@ -214,19 +217,19 @@ p <- ggplot(plot_data, aes(x=Year, y=Percentage,
                 theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-gender}
 p
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -240,14 +243,14 @@ all_df <- plot_data |> ungroup() |>
     rename("Group N"=total, "N"=n, 
             "Group"=!!group_var_name) |> 
     rbind(all_df)
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+## By Income
+
+```{r}
 group_var_name <- "Income"
 group_var <- "VCF0114"
 group_var_levels <- 1:5
@@ -288,19 +291,19 @@ p <- ggplot(plot_data, aes(x=Year, y=Percentage,
                 theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-income}
 p + guides(color=guide_legend(nrow=2)) 
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -315,14 +318,14 @@ all_df <- plot_data |> ungroup() |>
     rename("Group N"=total, "N"=n, 
             "Group"=!!group_var_name) |> 
     rbind(all_df)
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+## By Race
+
+```{r}
 group_var_name <- "Race"
 group_var <- "VCF0105b"
 group_var_levels <- 1:4
@@ -362,19 +365,19 @@ p <- ggplot(plot_data, aes(x=Year, y=Percentage,
                 theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-race}
 p
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -389,16 +392,16 @@ all_df <- plot_data |> ungroup() |>
     rename("Group N"=total, "N"=n, 
             "Group"=!!group_var_name) |> 
     rbind(all_df)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+Note: Options for race have varied significantly overtime, and the size of the ANES means that there are very small samples Asian and American Indian. Because of this they are grouped together into "Other, non-Hispanic" which also includes those who identify as multiple racial categories. I also drop any years where there are fewer than 50 individuals in the sample. This is far from ideal.
+
+
+## By Subjective Class
+
+```{r}
 group_var_name <- "Class"
 group_var <- "VCF0148a"
 group_var_levels <- 1:2
@@ -445,19 +448,19 @@ p <- ggplot(plot_data, aes(x=Year, y=Percentage,
                 theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-class}
 p
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -472,26 +475,26 @@ all_df <- plot_data |> ungroup() |>
     rename("Group N"=total, "N"=n, 
             "Group"=!!group_var_name) |> 
     rbind(all_df)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+Subjective class is what an individual _identifies_ as when asked. The question used by ANES is:
+
+>There’s been some talk these days about different social classes.
+Most people say they belong either to the middle class or the working
+class. Do you ever think of yourself as belonging in one of these classes?
+Which one?  
+
+In some years respondents were asked where they identified within "working" or "middle" but not consistently so that has been dropped from this analysis. 
+
+
+
+
+
+## By Party
+
+```{r}
 group_var_name <- "Partisanship"
 group_var <- "VCF0303"
 group_var_levels <- 1:3
@@ -538,19 +541,19 @@ p <- ggplot(plot_data, aes(x=Year, y=Percentage,
                 theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-party}
 p
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -565,15 +568,15 @@ all_df <- plot_data |> ungroup() |>
     rename("Group N"=total, "N"=n, 
             "Group"=!!group_var_name) |> 
     rbind(all_df)
-#
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+Note: This includes "leaners" in the party they lean towards. Individuals were first asked whether they think of themselves as a Republican, Democrat or Independent. Those who identify as Independent are then asked if they lean towards one party or the other. 
+
+## By Union Status
+
+```{r}
 group_var_name <- "Union"
 group_var <- "VCF0127"
 group_var_levels <- 1:2
@@ -612,19 +615,19 @@ p <- ggplot(plot_data, aes(x=Year, y=Percentage,
                 theme(legend.position="bottom", 
                 legend.justification = "left")
         
-#
-#
-#
-#
+```
+
+:::{.toggle-div .visible}
+```{r pos-blacks-union}
 p
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+:::{.toggle-div }
+
+```{r}
 
 p <- ggplotly(p)  |> 
     layout(legend = list(
@@ -639,23 +642,20 @@ all_df <- plot_data |> ungroup() |>
     rename("Group N"=total, "N"=n, 
             "Group"=!!group_var_name) |> 
     rbind(all_df)
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+:::
+
+
+## Data 
+
+```{r}
 
 write_csv(file=here::here("voter_trends", "data", paste0("opinion_",var_name, ".csv")), all_df)
 
-#
-#
-#
-#
-#
-#
-#
-#
-#
+```
+
+The summary statistics are available [here](data/opinion_Position of Blacks.csv). The `Group N` column is the number of respondents in a given group in a given year while the `N` column is the number of respondents who selected the answer in the `Position of Blacks` column.
+
+Note: These are all _weighted_ statistics (using the `VCF0011z` weights) and are provided if you'd like to make you own visualizations. If you are interested in doing your own analysis, use the raw data available from the [American National Election Studies survey](https://electionstudies.org/). 
+
