@@ -1,0 +1,15 @@
+/* css styles */
+
+.rt-tbody {
+    font-size: smaller
+}
+
+.toggle-div{
+    display: none;
+    position: absolute;
+}
+
+.toggle-div.visible{
+    display: block;
+    position: static;
+}

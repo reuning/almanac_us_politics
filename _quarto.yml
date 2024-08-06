@@ -1,0 +1,39 @@
+project:
+  type: website
+
+website:
+  title: "Almanac of US Politics"
+  site-url: https://AlmanacOfUSPolitics.com
+  open-graph: true
+  margin-footer: |
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Interactive Plots</label>
+    </div>
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - about.qmd
+      - section: "Voter Trends"
+        contents:
+          - voter_trends/party.qmd
+          - voter_trends/ideology.qmd
+          - section: Opinion
+            contents: voter_trends/opinion/*
+          - section: Political Activity
+            contents: voter_trends/political_activity/*
+          - section: Historical Trends
+            contents: voter_trends/historic/*
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    include-in-header: 
+      - file: button.html
+
+execute:
+  echo: false 
+  warning: false 
