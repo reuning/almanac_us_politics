@@ -13,3 +13,7 @@
     display: block;
     position: static;
 }
+
+.nobutton div.form-check{
+    display: none;
+}

@@ -4,6 +4,7 @@ project:
 website:
   title: "Almanac of US Politics"
   site-url: https://AlmanacOfUSPolitics.com
+  repo-url: https://github.com/reuning/almanac_us_politics
   open-graph: true
   margin-footer: |
     <div class="form-check form-switch">
@@ -25,6 +26,10 @@ website:
             contents: voter_trends/political_activity/*
           - section: Historical Trends
             contents: voter_trends/historic/*
+  page-footer:
+    center:
+      - icon: github
+        href: https://github.com/reuning/almanac_us_politics
 
 format:
   html:
@@ -33,6 +38,8 @@ format:
     toc: true
     include-in-header: 
       - file: button.html
+      - text: <script defer data-domain="almanacofuspolitics.com" src="https://plausible.io/js/script.js"></script>
+
 
 execute:
   echo: false 

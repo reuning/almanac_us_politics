@@ -1,4 +1,8 @@
 ---
 title: "Almanac of US Politics"
+format:
+    html:
+        body-classes: nobutton
 ---
 
+This website provides an overview of different political trends in American politics including opinions on [abortion](/voter_trends/opinion/abortion.qmd), [gun control](/voter_trends/opinion/gun_control.qmd) and [whether the parties are different](/voter_trends/opinion/party_differences.qmd). Use the menu on the left to look through the different options.
