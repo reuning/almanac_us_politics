@@ -1,4 +1,4 @@
 ---
-title: "Almanac of American Political Data"
+title: "Almanac of US Politics"
 ---
 
