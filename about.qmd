@@ -1,5 +1,10 @@
 ---
 title: "About"
+format:
+    html:
+        body-classes: nobutton
 ---
 
 This site collects data from a variety of sources to provide information about the American electorate and voters. This is intended to be used by those teaching classes in American politics, and other interested nerds. The data all comes from publicly available sources.
+
+If you have questions about it feel free to contact me ([Kevin Reuning](https://kevinreuning.com)) at [kevin.reuning@gmail.com](mailto:kevin.reuning@gmail.com). If you are interested in other data checkout my [Union Election tracker](https://unionelections.org)
